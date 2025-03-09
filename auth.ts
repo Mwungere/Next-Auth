@@ -36,9 +36,18 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
       if(existingUser.isTwoFactorEnabled) {
         const twoFactorConfirmation = await getTwoFactorConfirmationByUserId(existingUser.id);
 
+        console.log({twoFactorConfirmation});
+        
+
         if(!twoFactorConfirmation) return false;
 
         //delete 2FA for next sign in
+
+        await db.twoFactorConfirmation.delete({
+          where: {
+            id: twoFactorConfirmation.id
+          }
+        })
       }
 
       return true;
