@@ -51,6 +51,7 @@ export const LoginForm = () => {
           if (data?.error) {
             form.reset();
             setError(data.error);
+            return;
           }
 
           if (data?.success) {
@@ -62,9 +63,7 @@ export const LoginForm = () => {
             setShowTwoFactor(true);
           }
         })
-        .catch(() => {
-          setError("Something went wrong");
-        });
+       
     });
   };
   return (
