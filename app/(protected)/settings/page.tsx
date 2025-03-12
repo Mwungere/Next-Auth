@@ -13,7 +13,7 @@ const Settings = () => {
   const onClick = () => {
     startTransition(() => {
       settings({
-        name: "New Name!",
+        name: "Something different!",
       })
       .then(() => {
         update();
